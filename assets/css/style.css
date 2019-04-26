@@ -24,7 +24,7 @@ body {
 }
 
 #game-play {
-  display: flex;
+  display: none;
   flex-direction: column;
   width: inherit;
   justify-content: center;
