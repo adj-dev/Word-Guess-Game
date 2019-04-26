@@ -7,6 +7,10 @@ class Game {
     this.currentWord = this.chooseWord();
     this.library = ['mozart', 'beethoven', 'chopin', 'bach', 'haydn'];
     this.wrongLetters = [];
+    this.gameVisible = false;
+
+    // hide game-play div before game-play (makes sense...)
+    document.getElementById('game-play').style.display = 'none';
 
     // Set up event listener -- this will act as the 'control panel' for the game
     document.onkeyup = e => {
@@ -15,11 +19,12 @@ class Game {
       // Main control switch
       if (this.running === false) {
         this.running = true;
+        this.toggleDivs();
         this.chooseWord();
       } else if (!key.search(/[A-Za-z]/) && key.length === 1) {
         this.checkGuess(key, this.currentWord);
       } else {
-        alert('Please select a letter');
+        return;
       }
 
       // Checks if an entire word has been revealed.
@@ -52,13 +57,27 @@ class Game {
 
   // Sends a 'Game Over' message
   gameOver() {
-    alert('Game Over');
+    alert(`Game over! You won a total of ${this.currentScore} rounds!`);
+    this.toggleDivs();
   }
 
   // Resets all points
   resetGame() {
     this.currentScore = 0;
     this.resetTries();
+  }
+
+  // Shows the game-play div and hides the game-message
+  toggleDivs() {
+    if (!this.gameVisible) {
+      this.gameVisible = true;
+      document.getElementById('game-play').style.display = 'flex';
+      document.getElementById('game-message').style.display = 'none';
+    } else {
+      this.gameVisible = false;
+      document.getElementById('game-play').style.display = 'none';
+      document.getElementById('game-message').style.display = 'block';
+    }
   }
 
   // Checks the guessed letter against the chosen word
