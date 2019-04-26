@@ -29,7 +29,7 @@ class Game {
     document.getElementById('game-play').style.display = 'none';
 
     // Set up event listener -- this will act as the 'control panel' for the game
-    document.onkeyup = e => {
+    document.onkeydown = e => {
       let { key } = e;
 
       // Main control switch
