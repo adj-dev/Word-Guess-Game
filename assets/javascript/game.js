@@ -5,7 +5,23 @@ class Game {
     this.currentScore = 0;
     this.tries = 10;
     this.currentWord = this.chooseWord();
-    this.library = ['mozart', 'beethoven', 'chopin', 'bach', 'haydn'];
+    this.library = [
+      'mozart',
+      'beethoven',
+      'chopin',
+      'bach',
+      'haydn',
+      'debussy',
+      'tchaikovsky',
+      'handel',
+      'brahms',
+      'vivaldi',
+      'mahler',
+      'schubert',
+      'wagner',
+      'rachmaninoff',
+      'stravinsky'
+    ];
     this.wrongLetters = [];
     this.gameVisible = false;
 
